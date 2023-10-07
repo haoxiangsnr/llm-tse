@@ -2,7 +2,7 @@
 
 
 <p align="center">
-    <img src="website/src/components/Demo/scenarios.png" width="100%"> <br>
+    <img src="website/src/components/Demo/scenarios.png" width="80%"> <br>
 </p>
 
 ## Abstract
@@ -11,7 +11,7 @@ Humans possess an extraordinary ability to selectively focus on the sound source
 
 
 <p align="center">
-    <img src="website/static/img/diff.png" width="100%"> <br>
+    <img src="website/static/img/diff.png" width="800%"> <br>
     (Comparison between the conventional TSE system and our proposed Text-Guided TSE system. The conventional systems rely on the pre-registered voiceprint of the target speaker as an extraction cue, while our system offers the flexibility to incorporate text-based cues to facilitate the target speaker extraction.)
 </p>
 
@@ -21,4 +21,4 @@ We will release the LLM-TSE dataset soon.
 
 ## Models
 
-We will release a pre-trained model soon.
+We will release pre-trained models soon.
