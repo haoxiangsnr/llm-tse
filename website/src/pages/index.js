@@ -16,6 +16,7 @@ function HomepageHeader() {
       <div className="container">
         <h1 className="hero__title">{siteConfig.title}</h1>
         <p className="hero__subtitle">{siteConfig.tagline}</p>
+        <Divider></Divider>
         <Button type="default" icon={<FilePdfOutlined />}>Paper</Button>
         <Divider type="vertical" />
         <Button type="default" icon={<GithubOutlined />}>Github</Button>

@@ -2,8 +2,12 @@ import React from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
 import { Divider, Typography, Table } from 'antd';
-
+import { Col, Row } from 'antd';
 const { Title, Paragraph, Text, Link } = Typography;
+import { Layout, Space } from 'antd';
+import scenariosFigure from './scenarios.png';
+const { Header, Footer, Sider, Content } = Layout;
+import { Image } from 'antd';
 
 const columns = [
   {
@@ -22,60 +26,304 @@ const columns = [
     title: 'Enrollment (Text)',
     dataIndex: 'enrollText',
     key: 'enrollText',
+    render: (text) => (text) ? <Text mark={true}>{text}</Text> : <Text type="danger">w/o</Text>,
   },
   {
     title: "Separated",
     dataIndex: 'separated',
     key: 'separated',
     render: (url) => <audio controls src={url}><source type="audio/wav" /></audio>,
-
   },
-  {
-    title: "Ground Truth",
-    dataIndex: 'groundTruth',
-    key: 'groundTruth',
-    render: (url) => <audio controls src={url}><source type="audio/wav" /></audio>,
-  }
+  // {
+  //   title: "Ground Truth",
+  //   dataIndex: 'groundTruth',
+  //   key: 'groundTruth',
+  //   render: (url) => (url) ? <audio controls src={url}><source type="audio/wav" /></audio> : <Text type="danger"></Text>,
+  // }
 ];
 
-const dataSource = [
+const transSnippetsDataSource = [
   {
-    key: '1',
-    mixture: 'wav/sample_0_dl_0_0_mix_12.45.wav',
-    enrollAudio: "",
-    enrollText: "The speaker saying 'the henrietta temple for whom he had forfeited' in the mixed audio is me.",
-    separated: 'wav/sample_0_dl_0_0_enh_12.45.wav',
-    groundTruth: 'wav/sample_0_dl_0_0_target_12.45.wav',
+    key: '30',
+    mixture: 'wav/00030_mixture.wav',
+    enrollText: "Extract the speaker who is saying 'the mixture the affected parts' from this audio?",
+    separated: 'wav/00030_attr.wav',
+    groundTruth: 'wav/00030_target.wav',
   },
   {
-    key: '2',
-    mixture: 'wav/sample_0_dl_0_12_mix_12.26.wav',
-    enrollAudio: "wav/sample_0_dl_0_12_enroll_12.26.wav",
-    enrollText: "Take note that I said in the mixed audio is 'it did not occur to them to divide and appropriate the soil'.",
-    separated: 'wav/sample_0_dl_0_12_enh_12.26.wav',
-    groundTruth: 'wav/sample_0_dl_0_12_target_12.26.wav',
+    key: '30',
+    mixture: 'wav/00030_mixture.wav',
+    enrollAudio: 'wav/00030_enroll.wav',
+    separated: 'wav/00030_voiceprint.wav',
+    groundTruth: 'wav/00030_target.wav',
   },
   {
-    key: '1',
-    mixture: 'wav/sample_1_dl_4_9_mix_9.05.wav',
-    enrollAudio: "",
-    enrollText: "Please extract the female speaker in the mixed audio.",
-    separated: 'wav/sample_1_dl_4_9_enh_9.05.wav',
-    groundTruth: 'wav/sample_1_dl_4_9_target_9.05.wav',
+    key: '30',
+    mixture: 'wav/00030_mixture.wav',
+    enrollAudio: "wav/00030_enroll.wav",
+    enrollText: "Please note that the person speaking 'the mixture the affected parts' in the mixed audio should be extracted.",
+    separated: 'wav/00030_live.wav',
+    groundTruth: 'wav/00030_target.wav',
   },
-];
+  {
+    key: '30',
+    mixture: 'wav/00030_mixture.wav',
+    enrollAudio: "wav/00030_enroll.wav",
+    enrollText: "Can you mute the given enrollment voice from this audio?",
+    separated: 'wav/00030_control.wav',
+  },
+  {
+    key: "73",
+    mixture: "wav/00073_mixture.wav",
+    enrollText: "I need 'it was plain that only the ponies could go by it' spotted from this audio.",
+    separated: "wav/00073_attr.wav",
+    groundTruth: "wav/00073_target.wav",
+  },
+  {
+    key: "73",
+    mixture: "wav/00073_mixture.wav",
+    enrollAudio: "wav/00073_enroll.wav",
+    separated: "wav/00073_voiceprint.wav",
+    groundTruth: "wav/00073_target.wav",
+  },
+  {
+    key: "73",
+    mixture: "wav/00073_mixture.wav",
+    enrollAudio: "wav/00073_enroll.wav",
+    enrollText: "Please extract 'it was plain that only the ponies could go by it' in the mixed audio.",
+    separated: "wav/00073_live.wav",
+    groundTruth: "wav/00073_target.wav",
+  },
+  {
+    key: "73",
+    mixture: "wav/00073_mixture.wav",
+    enrollAudio: "wav/00073_enroll.wav",
+    enrollText: "Please remove the specified voice from this audio.",
+    separated: "wav/00073_control.wav",
+  },
+]
+
+const genderDataSource = [
+  {
+    key: "42",
+    mixture: "wav/00042_mixture.wav",
+    enrollText: "Could you support me in identifying and extracting the voice of male from this audio?",
+    separated: "wav/00042_attr.wav",
+    groundTruth: "wav/00042_target.wav",
+  },
+  {
+    key: "42",
+    mixture: "wav/00042_mixture.wav",
+    enrollAudio: "wav/00042_enroll.wav",
+    separated: "wav/00042_voiceprint.wav",
+    groundTruth: "wav/00042_target.wav",
+  },
+  {
+    key: "42",
+    mixture: "wav/00042_mixture.wav",
+    enrollAudio: "wav/00042_enroll.wav",
+    enrollText: "The male voice in the mixed audio should be extracted.",
+    separated: "wav/00042_live.wav",
+    groundTruth: "wav/00042_target.wav",
+  },
+  {
+    key: "42",
+    mixture: "wav/00042_mixture.wav",
+    enrollAudio: "wav/00042_enroll.wav",
+    enrollText: "Can you remove the specified voice from this audio?",
+    separated: "wav/00042_control.wav",
+  },
+  {
+    key: "87",
+    mixture: "wav/00087_mixture.wav",
+    enrollText: "Can you extract the specific voice of male from this audio?",
+    separated: "wav/00087_attr.wav",
+    groundTruth: "wav/00087_target.wav",
+  },
+  {
+    key: "87",
+    mixture: "wav/00087_mixture.wav",
+    enrollAudio: "wav/00087_enroll.wav",
+    separated: "wav/00087_voiceprint.wav",
+    groundTruth: "wav/00087_target.wav",
+  },
+  {
+    key: "87",
+    mixture: "wav/00087_mixture.wav",
+    enrollAudio: "wav/00087_enroll.wav",
+    enrollText: "The extracted speaker should be a man.",
+    separated: "wav/00087_live.wav",
+    groundTruth: "wav/00087_target.wav",
+  },
+  {
+    key: "87",
+    mixture: "wav/00087_mixture.wav",
+    enrollAudio: "wav/00087_enroll.wav",
+    enrollText: "Please remove the specified voice from this audio.",
+    separated: "wav/00087_control.wav",
+  },
+]
+
+const languageDataSource = [
+  {
+    key: "47",
+    mixture: "wav/00047_mixture.wav",
+    enrollText: "Is it possible to isolate the Spanish voice in this speech mix?",
+    separated: "wav/00047_attr.wav",
+    groundTruth: "wav/00047_target.wav",
+  },
+  {
+    key: "47",
+    mixture: "wav/00047_mixture.wav",
+    enrollAudio: "wav/00047_enroll.wav",
+    separated: "wav/00047_voiceprint.wav",
+    groundTruth: "wav/00047_target.wav",
+  },
+  {
+    key: "47",
+    mixture: "wav/00047_mixture.wav",
+    enrollAudio: "wav/00047_enroll.wav",
+    enrollText: "Please extract the Spanish voice in the mixed audio.",
+    separated: "wav/00047_live.wav",
+    groundTruth: "wav/00047_target.wav",
+  },
+  {
+    key: "47",
+    mixture: "wav/00047_mixture.wav",
+    enrollAudio: "wav/00047_enroll.wav",
+    enrollText: "Eliminate the given voice from this audio.",
+    separated: "wav/00047_control.wav",
+  },
+  {
+    key: "90",
+    mixture: "wav/00090_mixture.wav",
+    enrollText: "Would you be able to assist me in isolating the English voice from this mixture speech?",
+    separated: "wav/00090_attr.wav",
+    groundTruth: "wav/00090_target.wav",
+  },
+  {
+    key: "90",
+    mixture: "wav/00090_mixture.wav",
+    enrollAudio: "wav/00090_enroll.wav",
+    separated: "wav/00090_voiceprint.wav",
+    groundTruth: "wav/00090_target.wav",
+  },
+  {
+    key: "90",
+    mixture: "wav/00090_mixture.wav",
+    enrollAudio: "wav/00090_enroll.wav",
+    enrollText: "Please extract the English voice in the mixed audio.",
+    separated: "wav/00073_live.wav",
+    groundTruth: "wav/00090_target.wav",
+  },
+  {
+    key: "90",
+    mixture: "wav/00090_mixture.wav",
+    enrollAudio: "wav/00090_enroll.wav",
+    enrollText: "Please remove the specified voice from this audio.",
+    separated: "wav/00090_control.wav",
+  },
+]
+
+const loudnessFarNearDataSource = [
+  {
+    key: "160",
+    mixture: "wav/00160_mixture.wav",
+    enrollText: "Help me extract the speech signal of the loudest speaker.",
+    separated: "wav/00160_attr.wav",
+    groundTruth: "wav/00160_target.wav",
+  },
+  {
+    key: "160",
+    mixture: "wav/00160_mixture.wav",
+    enrollAudio: "wav/00160_enroll.wav",
+    separated: "wav/00160_voiceprint.wav",
+    groundTruth: "wav/00160_target.wav",
+  },
+  {
+    key: "160",
+    mixture: "wav/00160_mixture.wav",
+    enrollAudio: "wav/00160_enroll.wav",
+    enrollText: "Notice that the loudest sound in the mixed audio should be extracted.",
+    separated: "wav/00073_live.wav",
+    groundTruth: "wav/00160_target.wav",
+  },
+  {
+    key: "160",
+    mixture: "wav/00160_mixture.wav",
+    enrollAudio: "wav/00160_enroll.wav",
+    enrollText: "Remove the given voice from the mixtrue.",
+    separated: "wav/00160_control.wav",
+  },
+  {
+    key: "240",
+    mixture: "wav/00240_mixture.wav",
+    enrollText: "Help me retrieve the speech signal corresponding to far away from the microphone.",
+    separated: "wav/00240_attr.wav",
+    groundTruth: "wav/00240_target.wav",
+  },
+  {
+    key: "240",
+    mixture: "wav/00240_mixture.wav",
+    enrollAudio: "wav/00240_enroll.wav",
+    separated: "wav/00240_voiceprint.wav",
+    groundTruth: "wav/00240_target.wav",
+  },
+  {
+    key: "240",
+    mixture: "wav/00240_mixture.wav",
+    enrollAudio: "wav/00240_enroll.wav",
+    enrollText: "The speaker is far away from the microphone, and the reverberat is very serious.",
+    separated: "wav/00240_live.wav",
+    groundTruth: "wav/00240_target.wav",
+  },
+  {
+    key: "240",
+    mixture: "wav/00240_mixture.wav",
+    enrollAudio: "wav/00240_enroll.wav",
+    enrollText: "Eliminate the registered voice from this audio.",
+    separated: "wav/00240_control.wav",
+  },
+]
 
 
 export default function Demo() {
   return (
-    <Typography>
-      <Title>Abstract</Title>
-      <Paragraph>
-        Humans possess an extraordinary ability to selectively focus on the sound source of interest amidst complex acoustic environments, commonly referred to as cocktail party scenarios. In an attempt to replicate this remarkable auditory attention capability in machines, target speaker extraction (TSE) models have been developed. However, the effectiveness of these models is hindered in real-world scenarios due to the potential variation or even absence of pre-registered cues. To address this limitation, this study investigates the integration of natural language to enhance the flexibility and controllability of existing TSE models. Specifically, we leverage a large language model (LLM) to extract useful semantic cues from the user's typed text input, which can complement the pre-registered cues or work independently to control the TSE process. Our experimental results demonstrate competitive performance when only text-based cues are presented, and a new state-of-the-art is set when combined with pre-registered acoustic cues. To the best of our knowledge, this is the first work that has successfully incorporated text-based cues to guide target speaker extraction, which can be a cornerstone for cocktail party problem research.
-      </Paragraph>
+    <>
+      <Row justify="center">
+        <Title level={2}>Abstract</Title>
+      </Row>
+      <Row justify="center">
+        <Image src={scenariosFigure} width={960} />
+      </Row>
+      <Divider></Divider>
+      <Row justify="center" >
+        <Col span={12}>
+          <Paragraph className={styles.abstract}>
+            Humans possess an extraordinary ability to selectively focus on the sound source of interest amidst complex acoustic environments, commonly referred to as cocktail party scenarios. In an attempt to replicate this remarkable auditory attention capability in machines, target speaker extraction (TSE) models have been developed. However, the effectiveness of these models is hindered in real-world scenarios due to the potential variation or even absence of pre-registered cues. To address this limitation, this study investigates the integration of natural language to enhance the flexibility and controllability of existing TSE models. Specifically, we leverage a large language model (LLM) to extract useful semantic cues from the user's typed text input, which can complement the pre-registered cues or work independently to control the TSE process. Our experimental results demonstrate competitive performance when only text-based cues are presented, and a new state-of-the-art is set when combined with pre-registered acoustic cues. To the best of our knowledge, this is the first work that has successfully incorporated text-based cues to guide target speaker extraction, which can be a cornerstone for cocktail party problem research.
+          </Paragraph>
+        </Col>
+      </Row>
       <Divider />
-      <Title>Demo</Title>
-      <Table dataSource={dataSource} columns={columns} />;
-    </Typography>
+      <Row justify="center">
+        <Title level={2}>Demo</Title>
+      </Row>
+      <Divider>Loudness or Far/Near</Divider>
+      <Row justify="center">
+        <Table dataSource={loudnessFarNearDataSource} columns={columns} size="middle" pagination={false} />
+      </Row>
+      <Divider>Gender</Divider>
+      <Row justify="center">
+        <Table dataSource={genderDataSource} columns={columns} size="middle" pagination={false} />
+      </Row>
+      <Divider>Language</Divider>
+      <Row justify="center">
+        <Table dataSource={languageDataSource} columns={columns} size='middle' pagination={false} />
+      </Row>
+      <Divider>Transcription Snippets</Divider>
+      <Row justify="center">
+        <Table dataSource={transSnippetsDataSource} columns={columns} size="middle" pagination={false} />
+      </Row>
+    </>
   );
 }
