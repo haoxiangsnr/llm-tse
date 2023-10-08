@@ -1,11 +1,13 @@
 import React from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
-import { Divider, Typography, Table } from 'antd';
+import { Divider, Typography, Table, Carousel } from 'antd';
 import { Col, Row } from 'antd';
 const { Title, Paragraph, Text, Link } = Typography;
 import { Layout, Space } from 'antd';
-import scenariosFigure from './scenarios.png';
+import scenariosFigure from '../../../static/img/scenarios.png';
+import diffFigure from '../../../static/img/diff.png';
+import modelArchFigure from '../../../static/img/model_arch.png';
 const { Header, Footer, Sider, Content } = Layout;
 import { Image } from 'antd';
 
@@ -15,24 +17,28 @@ const columns = [
     dataIndex: 'mixture',
     key: 'mixture',
     render: (url) => <audio controls src={url}><source type="audio/wav" /></audio>,
+    width: 200,
   },
   {
     title: 'Enrollment (Audio)',
     dataIndex: 'enrollAudio',
     key: 'enrollAudio',
     render: (url) => (url) ? <audio controls src={url}><source type="audio/wav" /></audio> : <Text type="danger">w/o</Text>,
+    width: 200,
   },
   {
     title: 'Enrollment (Text)',
     dataIndex: 'enrollText',
     key: 'enrollText',
     render: (text) => (text) ? <Text mark={true}>{text}</Text> : <Text type="danger">w/o</Text>,
+    width: 200,
   },
   {
     title: "Separated",
     dataIndex: 'separated',
     key: 'separated',
     render: (url) => <audio controls src={url}><source type="audio/wav" /></audio>,
+    width: 200,
   },
   // {
   //   title: "Ground Truth",
@@ -294,7 +300,7 @@ export default function Demo() {
         <Title level={2}>Abstract</Title>
       </Row>
       <Row justify="center">
-        <Image src={scenariosFigure} width={960} />
+        <Image src={scenariosFigure} width={960} className={styles.image} />
       </Row>
       <Divider></Divider>
       <Row justify="center" >
@@ -309,21 +315,13 @@ export default function Demo() {
         <Title level={2}>Demo</Title>
       </Row>
       <Divider>Loudness or Far/Near</Divider>
-      <Row justify="center">
-        <Table dataSource={loudnessFarNearDataSource} columns={columns} size="middle" pagination={false} />
-      </Row>
+      <Table className={styles.table} dataSource={loudnessFarNearDataSource} columns={columns} size="middle" pagination={false} />
       <Divider>Gender</Divider>
-      <Row justify="center">
-        <Table dataSource={genderDataSource} columns={columns} size="middle" pagination={false} />
-      </Row>
+      <Table className={styles.table} dataSource={genderDataSource} columns={columns} size="middle" pagination={false} />
       <Divider>Language</Divider>
-      <Row justify="center">
-        <Table dataSource={languageDataSource} columns={columns} size='middle' pagination={false} />
-      </Row>
+      <Table className={styles.table} dataSource={languageDataSource} columns={columns} size='middle' pagination={false} />
       <Divider>Transcription Snippets</Divider>
-      <Row justify="center">
-        <Table dataSource={transSnippetsDataSource} columns={columns} size="middle" pagination={false} />
-      </Row>
+      <Table className={styles.table} dataSource={transSnippetsDataSource} columns={columns} pagination={false} />
     </>
   );
 }
