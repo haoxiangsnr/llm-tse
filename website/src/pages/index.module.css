@@ -3,21 +3,24 @@
  * and scoped locally.
  */
 
-.heroBanner {
+.banner {
   padding: 4rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
+  background-color: var(--ifm-color-primary);
 }
 
 @media screen and (max-width: 996px) {
-  .heroBanner {
+  .banner {
     padding: 2rem;
   }
 }
 
-.buttons {
-  display: flex;
-  align-items: center;
-  justify-content: center;
+.title {
+  color: #ffffff !important;
+}
+
+.links {
+  margin-top: 2em;
 }
