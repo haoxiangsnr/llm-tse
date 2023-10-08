@@ -1,15 +1,17 @@
 import React from 'react';
 import clsx from 'clsx';
 import styles from './styles.module.css';
-import { Divider, Typography, Table, Carousel } from 'antd';
+import { Divider, Typography, Table, Carousel, Card } from 'antd';
 import { Col, Row } from 'antd';
-const { Title, Paragraph, Text, Link } = Typography;
 import { Layout, Space } from 'antd';
 import scenariosFigure from '../../../static/img/scenarios.png';
 import diffFigure from '../../../static/img/diff.png';
 import modelArchFigure from '../../../static/img/model_arch.png';
-const { Header, Footer, Sider, Content } = Layout;
 import { Image } from 'antd';
+const { Header, Footer, Sider, Content } = Layout;
+const { Meta } = Card;
+const { Title, Paragraph, Text, Link } = Typography;
+
 
 const columns = [
   {
@@ -299,17 +301,42 @@ export default function Demo() {
       <Row justify="center">
         <Title level={2}>Abstract</Title>
       </Row>
-      <Row justify="center">
-        <Image src={scenariosFigure} width={960} className={styles.image} />
-      </Row>
-      <Divider></Divider>
       <Row justify="center" >
         <Col span={12}>
-          <Paragraph className={styles.abstract}>
+          <Text className={styles.abstract}>
             Humans possess an extraordinary ability to selectively focus on the sound source of interest amidst complex acoustic environments, commonly referred to as cocktail party scenarios. In an attempt to replicate this remarkable auditory attention capability in machines, target speaker extraction (TSE) models have been developed. However, the effectiveness of these models is hindered in real-world scenarios due to the potential variation or even absence of pre-registered cues. To address this limitation, this study investigates the integration of natural language to enhance the flexibility and controllability of existing TSE models. Specifically, we leverage a large language model (LLM) to extract useful semantic cues from the user's typed text input, which can complement the pre-registered cues or work independently to control the TSE process. Our experimental results demonstrate competitive performance when only text-based cues are presented, and a new state-of-the-art is set when combined with pre-registered acoustic cues. To the best of our knowledge, this is the first work that has successfully incorporated text-based cues to guide target speaker extraction, which can be a cornerstone for cocktail party problem research.
-          </Paragraph>
+          </Text>
         </Col>
       </Row>
+      <Divider />
+      <Row justify="center">
+        <Col span={10}>
+          <Card cover={<Image src={diffFigure} />}>
+            <Meta
+              description="Comparison between the conventional TSE system and our proposed LLM-TSE system. The conventional systems rely on the pre-registered voiceprint of the target speaker as an extraction cue, while our system offers the flexibility to incorporate text-based cues to facilitate the target speaker extraction process."
+            />
+          </Card>
+        </Col>
+      </Row>
+      <Row justify="center">
+        <Col span={10}>
+          <Card cover={<Image src={scenariosFigure} />}>
+            <Meta
+              description="New application scenarios enabled by the proposed LLM-TSE."
+            />
+          </Card>
+        </Col>
+      </Row>
+      <Row justify="center">
+        <Col span={10}>
+          <Card cover={<Image src={modelArchFigure} />}>
+            <Meta
+              description="Overview of the proposed LLM-TSE model architecture."
+            />
+          </Card>
+        </Col>
+      </Row>
+      <Divider></Divider>
       <Divider />
       <Row justify="center">
         <Title level={2}>Demo</Title>
@@ -321,7 +348,7 @@ export default function Demo() {
       <Divider>Language</Divider>
       <Table className={styles.table} dataSource={languageDataSource} columns={columns} size='middle' pagination={false} />
       <Divider>Transcription Snippets</Divider>
-      <Table className={styles.table} dataSource={transSnippetsDataSource} columns={columns} pagination={false} />
+      <Table className={styles.table} dataSource={transSnippetsDataSource} columns={columns} size='middle' pagination={false} />
     </>
   );
 }

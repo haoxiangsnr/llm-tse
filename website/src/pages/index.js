@@ -16,11 +16,11 @@ function Banner() {
   const { siteConfig } = useDocusaurusContext();
   return (
     <Typography className={styles.banner}>
-      <Title level={2} className={styles.title}>{siteConfig.title}</Title>
-      <Title level={3} className={styles.title}>
+      <Title level={1} className={styles.title}>{siteConfig.title}</Title>
+      <Title level={2} className={styles.title}>
         Xiang Hao<sup>1,2</sup>, Jibin Wu<sup>1,*</sup>, Jianwei Yu<sup>2</sup>, Chenglin Xu<sup>1</sup>, and Kay Chen Tan<sup>1</sup>
       </Title>
-      <Title level={5} className={styles.title}>
+      <Title level={4} className={styles.title}>
         <sup>1</sup>The Hong Kong Polytechnic University, <sup>2</sup>Tencent AI Lab
       </Title>
       <Divider />
