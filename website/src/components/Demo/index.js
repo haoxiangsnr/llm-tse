@@ -253,7 +253,7 @@ const loudnessFarNearDataSource = [
     mixture: "wav/00160_mixture.wav",
     enrollAudio: "wav/00160_enroll.wav",
     enrollText: "Notice that the loudest sound in the mixed audio should be extracted.",
-    separated: "wav/00073_live.wav",
+    separated: "wav/00160_live.wav",
     groundTruth: "wav/00160_target.wav",
   },
   {
