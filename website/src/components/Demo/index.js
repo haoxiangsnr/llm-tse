@@ -344,14 +344,14 @@ export default function Demo() {
       <Row justify="center">
         <Title level={2}>Demo</Title>
       </Row>
+      <Divider>Transcription Snippets</Divider>
+      <Table className={styles.table} dataSource={transSnippetsDataSource} columns={columns} size='middle' pagination={false} />
       <Divider>Loudness or Far/Near</Divider>
       <Table className={styles.table} dataSource={loudnessFarNearDataSource} columns={columns} size="middle" pagination={false} />
       <Divider>Gender</Divider>
       <Table className={styles.table} dataSource={genderDataSource} columns={columns} size="middle" pagination={false} />
       <Divider>Language</Divider>
       <Table className={styles.table} dataSource={languageDataSource} columns={columns} size='middle' pagination={false} />
-      <Divider>Transcription Snippets</Divider>
-      <Table className={styles.table} dataSource={transSnippetsDataSource} columns={columns} size='middle' pagination={false} />
     </>
   );
 }
