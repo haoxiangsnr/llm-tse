@@ -32,7 +32,7 @@ const columns = [
     title: 'Enrollment (Text)',
     dataIndex: 'enrollText',
     key: 'enrollText',
-    render: (text) => (text) ? <Text mark={true}>{text}</Text> : <Text type="danger">w/o</Text>,
+    render: (text) => (text) ? <Text>{text}</Text> : <Text type="danger">w/o</Text>,
     width: 200,
   },
   {
@@ -77,7 +77,7 @@ const transSnippetsDataSource = [
     key: '30',
     mixture: 'wav/00030_mixture.wav',
     enrollAudio: "wav/00030_enroll.wav",
-    enrollText: <>I <Text type="danger" underline>don't want to</Text> the given voice of in this audio.</>,
+    enrollText: <>I <Text mark>don't want to</Text> the given voice of in this audio.</>,
     separated: 'wav/00030_control.wav',
   },
   {
@@ -106,7 +106,7 @@ const transSnippetsDataSource = [
     key: "73",
     mixture: "wav/00073_mixture.wav",
     enrollAudio: "wav/00073_enroll.wav",
-    enrollText: <>Is it possible to <Text type="danger" underline>erase</Text> the given voice from this audio?</>,
+    enrollText: <>Is it possible to <Text mark>erase</Text> the given voice from this audio?</>,
     separated: "wav/00073_control.wav",
   },
 ]
@@ -138,7 +138,7 @@ const genderDataSource = [
     key: "42",
     mixture: "wav/00042_mixture.wav",
     enrollAudio: "wav/00042_enroll.wav",
-    enrollText: <>Can you <Text type="danger" underline>remove</Text> the specified voice from this audio?</>,
+    enrollText: <>Can you <Text mark>remove</Text> the specified voice from this audio?</>,
     separated: "wav/00042_control.wav",
   },
   {
@@ -167,7 +167,7 @@ const genderDataSource = [
     key: "87",
     mixture: "wav/00087_mixture.wav",
     enrollAudio: "wav/00087_enroll.wav",
-    enrollText: <>Please <Text type='danger' underline>remove</Text> the specified voice from this audio.</>,
+    enrollText: <>Please <Text mark>remove</Text> the specified voice from this audio.</>,
     separated: "wav/00087_control.wav",
   },
 ]
@@ -199,7 +199,7 @@ const languageDataSource = [
     key: "47",
     mixture: "wav/00047_mixture.wav",
     enrollAudio: "wav/00047_enroll.wav",
-    enrollText: <><Text type='danger' underline>Eliminate</Text> the given voice from this audio.</>,
+    enrollText: <><Text mark>Eliminate</Text> the given voice from this audio.</>,
     separated: "wav/00047_control.wav",
   },
   {
@@ -228,7 +228,7 @@ const languageDataSource = [
     key: "90",
     mixture: "wav/00090_mixture.wav",
     enrollAudio: "wav/00090_enroll.wav",
-    enrollText: <>Please <Text type='danger' underline>remove</Text> the specified voice from this audio.</>,
+    enrollText: <>Please <Text mark>remove</Text> the specified voice from this audio.</>,
     separated: "wav/00090_control.wav",
   },
 ]
@@ -260,7 +260,7 @@ const loudnessFarNearDataSource = [
     key: "160",
     mixture: "wav/00160_mixture.wav",
     enrollAudio: "wav/00160_enroll.wav",
-    enrollText: <><Text type='danger' underline>Remove</Text> the given voice from the mixtrue.</>,
+    enrollText: <><Text mark>Remove</Text> the given voice from the mixtrue.</>,
     separated: "wav/00160_control.wav",
   },
   {
@@ -289,7 +289,7 @@ const loudnessFarNearDataSource = [
     key: "240",
     mixture: "wav/00240_mixture.wav",
     enrollAudio: "wav/00240_enroll.wav",
-    enrollText: <><Text type='danger' underline>Eliminate</Text> the registered voice from this audio.</>,
+    enrollText: <><Text mark>Eliminate</Text> the registered voice from this audio.</>,
     separated: "wav/00240_control.wav",
   },
 ]
