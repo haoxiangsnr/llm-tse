@@ -1,16 +1,13 @@
 import React from 'react';
-import clsx from 'clsx';
 import styles from './styles.module.css';
-import { Divider, Typography, Table, Carousel, Card } from 'antd';
+import { Divider, Typography, Table, Card } from 'antd';
 import { Col, Row } from 'antd';
-import { Layout, Space } from 'antd';
 import scenariosFigure from '../../../static/img/scenarios.png';
 import diffFigure from '../../../static/img/diff.png';
 import modelArchFigure from '../../../static/img/model_arch.png';
 import { Image } from 'antd';
-const { Header, Footer, Sider, Content } = Layout;
 const { Meta } = Card;
-const { Title, Paragraph, Text, Link } = Typography;
+const { Title, Paragraph, Text } = Typography;
 
 
 const columns = [
@@ -221,7 +218,7 @@ const languageDataSource = [
     mixture: "wav/00090_mixture.wav",
     enrollAudio: "wav/00090_enroll.wav",
     enrollText: "Please extract the English voice in the mixed audio.",
-    separated: "wav/00073_live.wav",
+    separated: "wav/00090_live.wav",
     groundTruth: "wav/00090_target.wav",
   },
   {
