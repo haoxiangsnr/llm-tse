@@ -6,7 +6,6 @@ import Layout from '@theme/Layout';
 import Demo from '@site/src/components/Demo';
 import { DatePicker, Divider, Row } from 'antd';
 import { Button, Space, Typography } from 'antd';
-
 import styles from './index.module.css';
 import { FilePdfOutlined, GithubOutlined } from '@ant-design/icons';
 
@@ -25,9 +24,9 @@ function Banner() {
       </Title>
       <Divider />
       <Row justify="center" align="middle" className={styles.links}>
-        <Button type="default" icon={<FilePdfOutlined />}>Paper</Button>
+        <Button type="default" icon={<FilePdfOutlined />}><Link to="https://arxiv.org/abs/2310.07284">Paper</Link></Button>
         <Divider type="vertical" />
-        <Button type="default" icon={<GithubOutlined />}>Github</Button>
+        <Button type="default" icon={<GithubOutlined />}><Link to="https://github.com/haoxiangsnr/llm-tse/">Github</Link></Button>
       </Row>
     </Typography>
   );
